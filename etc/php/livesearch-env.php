@@ -16,6 +16,8 @@ return [
             ],
             'services_connector' => [
                 'sandbox_gateway_url' => 'https://commerce-int.adobe.io/',
+                'sandbox_magi_gateway_url' => 'https://qa-api.magedevteam.com/',
+                'api_portal_url' => 'https://account-stage.magedevteam.com/apiportal/index/index/',
             ],
         ],
     ],

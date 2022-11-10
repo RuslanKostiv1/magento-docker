@@ -100,14 +100,13 @@ bin/magento setup:install \
 bin/magento module:enable --all
 
 if [[ "$INSTALL_LIVESEARCH" == 'yes' ]]; then
+
   if [[ "$MAGENTO_EDITION" == 'CE' ]]; then
     bin/magento module:disable Magento_Elasticsearch Magento_Elasticsearch6 Magento_Elasticsearch7  # Magento_AdvancedSearch
   else
     bin/magento module:disable Magento_Elasticsearch Magento_Elasticsearch6 Magento_Elasticsearch7 Magento_ElasticsearchCatalogPermissions Magento_InventoryElasticsearch Magento_ElasticsearchCatalogPermissionsGraphQl
   fi
-fi
 
-if [[ "$INSTALL_LIVESEARCH" == 'yes' ]]; then
   # add QA environment to env.php, https://github.com/magento-commerce/magento-live-search#connecting-to-qa-environment
   php -r '$sC = include "/tmp/livesearch-env.php"; $env = include "app/etc/env.php"; $env = array_replace_recursive($env, $sC); $contents = var_export($env, true); file_put_contents("app/etc/env.php", "<?php\n return $contents; \n");'
 
@@ -117,14 +116,23 @@ if [[ "$INSTALL_LIVESEARCH" == 'yes' ]]; then
   cd '/var/www/magento2ce/'
 fi
 
+if [[ "$INSTALL_PREX" == 'yes' ]]; then
+  # add QA environment to env.php, https://github.com/magento-commerce/magento-live-search#connecting-to-qa-environment
+  php -r '$sC = include "/tmp/prex-env.php"; $env = include "app/etc/env.php"; $env = array_replace_recursive($env, $sC); $contents = var_export($env, true); file_put_contents("app/etc/env.php", "<?php\n return $contents; \n");'
+
+  # add config, so PREX would use QA environment
+  cd '/var/www/'
+  php -r '$filesConfig = include "/tmp/prex-qa-config.php"; foreach ($filesConfig as $file => $config) { file_put_contents($file, strtr(file_get_contents($file), $config)); };'
+  cd '/var/www/magento2ce/'
+fi
+
 
 echo "Compiling Magento with changes..."
+# apply Magento configs
+php -f /tmp/magento_config_setup.php
 bin/magento setup:upgrade
 bin/magento setup:di:compile
 bin/magento cache:flush
-
-# apply Magento configs
-php -f /tmp/magento_config_setup.php
 
 #taken from config_setup
 bin/magento config:set web/secure/base_url https://${MAGENTO_DOMAIN}/

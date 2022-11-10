@@ -51,7 +51,7 @@ Note, for the first installation (when you don't have cloned repositories yes) p
 * RUN `mutagen project start` to start project (repositories clone, linking, configuration)
 * Log in to the Admin UI (use `ADMIN_USER`/`ADMIN_PASSWORD` from `.env`), 
 * Navigate to Stores > Configuration > Services > Commerce Services Connector
-* Get your QA API credentials from [DEV API Portal](https://account-stage.magedevteam.com/apiportal/index/index/) with Environment as QA and save them in Admin UI.
+* Get your QA API credentials from [DEV API Portal](https://account-stage.magedevteam.com/apiportal/index/index/) with Environment as *QA* and save them in Admin UI.
 * Get your PROD API credentials from [API Portal](https://account.magento.com/apiportal/index/index/) with Environment as *Production* and save them in Admin UI.
 * Refer to [this](https://devdocs.magento.com/live-search/config-connect.html) document for additional information.
 * to sync products to SaaS run the following commands:
@@ -74,7 +74,8 @@ bin/magento cron:run
 #### SaaS connector credentials setup
 
 * After first project install you can automate pre-filling of SaaS credentials (pretty useful if you reinstall Magento often)
-* Navigate to `etc/php/magento-config.php`
+* Navigate to `etc/php/magento-config.php.dist` 
+* copy it to `etc/php/magento-config.php` (available locally, ignored for commits)
 * find node `services_connector` and fill sub-nodes according to the values from `Commerce Services Connector`. 
 * See comments regarding each config value. 
 

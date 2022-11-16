@@ -76,7 +76,6 @@ services:
       - ./etc/php/prex-env.php:/tmp/prex-env.php
       - ./etc/php/storefront-env.php:/tmp/storefront-env.php
       - ./etc/php/magento-config.php:/tmp/magento-config.php
-      - ./etc/php/magento-config.php.dist:/tmp/magento-config.php.dist
       - ./etc/php/magento_config_setup.php:/tmp/magento_config_setup.php
       - ./etc/php/path-validator.patch:/tmp/path-validator.patch
       - ./etc/php/livesearch-qa-config.php:/tmp/livesearch-qa-config.php

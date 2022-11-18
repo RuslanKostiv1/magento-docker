@@ -62,8 +62,8 @@ function setMagentoConfig(
 $magentoConfig = include "/tmp/magento-config.php";
 if (!$magentoConfig) {
     echo "'magento-config.php' file not found, set up Commerce Services Connector manually via admin. " .
-        "See README.md for more details";
+        "See README.md for more details.\n" ;
 } else {
     applyConfig($magentoConfig, $configWriter, $encryptor);
-    echo "Commerce Services Connector set up!";
+    echo "Commerce Services Connector set up!\n";
 }

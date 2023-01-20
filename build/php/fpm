@@ -1,4 +1,4 @@
-ARG MIN_PHP_VERSION=8.1.0
+ARG MIN_PHP_VERSION=8.2.0
 
 FROM php:$MIN_PHP_VERSION AS source_php_ext
 RUN apt-get update \

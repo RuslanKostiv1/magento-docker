@@ -94,6 +94,7 @@ bin/magento setup:install \
    --db-host=db \
    --opensearch-host=opensearch \
    --opensearch-port=${OPENSEARCH_PORT} \
+   --elasticsearch-host=opensearch \
    --db-prefix=
 
 #bin/magento module:disable Magento_TwoFactorAuth

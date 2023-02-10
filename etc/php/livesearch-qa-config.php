@@ -18,5 +18,8 @@ return [
     'services-id/ServicesId/etc/config.xml' => [
         // temporary, until v1 released
         'services-connector-ui.magento-ds.com/v1/index.js' => 'services-connector-qa.magento-datasolutions.com/v1/index.js'
+    ],
+    'magento-live-search/LiveSearchProductListing/etc/config.xml' => [
+        'plp-widgets-ui.magento-ds.com' => 'plp-widgets-ui-qa.magento-datasolutions.com',
     ]
 ];

@@ -107,12 +107,12 @@ if [[ "$INSTALL_LIVESEARCH" == 'yes' ]]; then
     # 2.4.5
 #    bin/magento module:disable Magento_Elasticsearch Magento_Elasticsearch6 Magento_Elasticsearch7  # Magento_AdvancedSearch
     # 2.4.6
-    bin/magento module:disable Magento_Elasticsearch Magento_OpenSearch Magento_Elasticsearch7 Magento_Elasticsearch8  # Magento_AdvancedSearch
+    bin/magento module:disable Magento_Elasticsearch Magento_OpenSearch Magento_Elasticsearch7  # Magento_AdvancedSearch
   else
     # 2.4.5
 #    bin/magento module:disable Magento_Elasticsearch Magento_Elasticsearch6 Magento_Elasticsearch7 Magento_ElasticsearchCatalogPermissions Magento_InventoryElasticsearch Magento_ElasticsearchCatalogPermissionsGraphQl
     # 2.4.6
-    bin/magento module:disable Magento_OpenSearch Magento_Elasticsearch Magento_Elasticsearch7 Magento_Elasticsearch8 Magento_ElasticsearchCatalogPermissions Magento_InventoryElasticsearch Magento_ElasticsearchCatalogPermissionsGraphQl
+    bin/magento module:disable Magento_OpenSearch Magento_Elasticsearch Magento_Elasticsearch7 Magento_ElasticsearchCatalogPermissions Magento_InventoryElasticsearch Magento_ElasticsearchCatalogPermissionsGraphQl
   fi
 
   # add QA environment to env.php, https://github.com/magento-commerce/magento-live-search#connecting-to-qa-environment

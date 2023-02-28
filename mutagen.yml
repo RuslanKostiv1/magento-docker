@@ -43,12 +43,12 @@ sync:
       defaultFileMode: 0666
       defaultDirectoryMode: 0777
   code:
-    alpha: "~/projects/livesearch/repos"
+    alpha: "/Users/ruslankostiv/projects/livesearch/repos"
     beta: "docker://web-mutagen/var/www"
     mode: "two-way-resolved"
     ignore:
       paths:
         - ".idea"
         - ".git"
-#        - "/magento2ce/vendor"
-#        - "/magento2ce/generated"
+        - "/magento2ce/vendor"
+        - "/magento2ce/generated"

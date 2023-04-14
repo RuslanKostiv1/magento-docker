@@ -53,7 +53,7 @@ Note, for the first installation (when you don't have cloned repositories yes) p
 * Navigate to Stores > Configuration > Services > Commerce Services Connector
 * Get your QA API credentials from [DEV API Portal](https://account-stage.magedevteam.com/apiportal/index/index/) with Environment as *QA* and save them in Admin UI.
 * Get your PROD API credentials from [API Portal](https://account.magento.com/apiportal/index/index/) with Environment as *Production* and save them in Admin UI.
-* Refer to [this](https://devdocs.magento.com/live-search/config-connect.html) document for additional information.
+* Refer to [this](https://experienceleague.adobe.com/docs/commerce-merchant-services/user-guides/integration-services/saas.html?lang=en) document for additional information.
 * to sync products to SaaS run the following commands:
 ```
 bin/magento saas:resync --feed productattributes

@@ -49,6 +49,7 @@ Note, for the first installation (when you don't have cloned repositories yes) p
 ### Project install
 
 * RUN `mutagen project start` to start project (repositories clone, linking, configuration)
+* If you're getting the error `init_project: line 16: export: `#NEW_REPOS': not a valid identifier` and don't use `NEW_REPOS`, delete that line safely in `.env` file.
 * Log in to the Admin UI (use `ADMIN_USER`/`ADMIN_PASSWORD` from `.env`), 
 * Navigate to Stores > Configuration > Services > Commerce Services Connector
 * Get your QA API credentials from [DEV API Portal](https://account-stage.magedevteam.com/apiportal/index/index/) with Environment as *QA* and save them in Admin UI.

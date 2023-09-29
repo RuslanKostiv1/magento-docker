@@ -54,17 +54,58 @@ Note, for the first installation (when you don't have cloned repositories yes) p
 * Get your QA API credentials from [DEV API Portal](https://account-stage.magedevteam.com/apiportal/index/index/) with Environment as *QA* and save them in Admin UI.
 * Get your PROD API credentials from [API Portal](https://account.magento.com/apiportal/index/index/) with Environment as *Production* and save them in Admin UI.
 * Refer to [this](https://devdocs.magento.com/live-search/config-connect.html) document for additional information.
-* to sync products to SaaS run the following commands:
+* to sync products to SaaS run the following commands (before commerce-data export v103.0.0):
 ```
 bin/magento saas:resync --feed productattributes
 bin/magento saas:resync --feed products
 bin/magento saas:resync --feed productoverrides
 ```
+since commerce-data export v103.0.0 the following feeds must be run:
+```
+bin/magento saas:resync --feed productattributes
+bin/magento saas:resync --feed products
+bin/magento saas:resync --feed productoverrides
+bin/magento saas:resync --feed scopesCustomerGroup
+bin/magento saas:resync --feed scopesWebsite
+bin/magento saas:resync --feed prices
+bin/magento saas:resync --feed variants
+bin/magento saas:resync --feed categories
+bin/magento saas:resync --feed categoryPermissions 
+```         
 * to sync product updates simply run
 ```
 bin/magento cron:run
 bin/magento cron:run
 ```
+
+### Container files sync issues
+If you have issues with mutagen files sync (no changes from host reflected in files in containers, sync errors if running `mutagen sync list`), do the following: 
+* run `mutagen sync list` to get list of syncs, output may look like this:
+```
+Name: code
+Identifier: sync_rFbovEduhlHv6ZOFWlNt4WFaWPRmHEU44fiNbhZXMwv
+Labels:
+	io.mutagen.project: proj_h8cbq5g9tO2MZw278MeyeyizVJtHRujJyWbLYd5wnhm
+Alpha:
+	URL: /Users/ruslankostiv/projects/livesearch/repos
+	Connection state: Connected
+Beta:
+	URL: docker://web-mutagen/var/www
+	Connection state: Connected
+Status: Watching for changes
+```
+* use sync identifier (`sync_rFbovEduhlHv6ZOFWlNt4WFaWPRmHEU44fiNbhZXMwv` in example above) to flush the sync, `mutagen sync flush sync_rFbovEduhlHv6ZOFWlNt4WFaWPRmHEU44fiNbhZXMwv`
+
+### Install extensions from GitHub repositories after project installed
+* navigate to folder where Magento repositories were cloned (`MAGENTO_PATH` from `.env`, for example `~/projects/livesearch/repos`)
+* clone GitHub needed repositories into `MAGENTO_PATH` folder (`git clone https://github.com/magento-commerce/saas-prices-provider`. for example)
+* navigate to app container (`docker-compose exec app bash`)
+* to create symlinks to Magento project, command from [reinstall](https://github.com/duhon/magento-docker/blob/382d9b6a07a2c0c6fe7ae04991ac3d2e7203b514/etc/php/tools/reinstall#L27) script will be used
+* run `php -f /var/www/magento2ee/dev/tools/build-ee.php -- --command link --exclude true --ce-source /var/www/magento2ce/app/code/Magento --ee-source /var/www/${edition}`, replace `${edition}` with name of folder was created after cloning GitHub repository (for example `saas-prices-provider`)
+* to make sure that extension available, run `bin/magento module:status` and check that extension is in the list of disabled modules.
+* run `bin/magento module:enable <module_list_of_modules>` to enable them
+* run `bin/magento setup:upgrade` to apply extension changes
+* if there's an error `Module does not exist` it means cloned repositories were not synced between host and container after they cloned. To fix it, follow "Container files sync issues" steps.
 
 ### Troubleshooting
    * Add MAGENTO_PATH path to Docker sharing folders (Docker preferences) in case docker-error
@@ -101,6 +142,9 @@ bin/magento cron:run
 
 * restart container:  
 `docker-compose restart <app_name>`
+
+* remove container:
+`docker-compose rm <app_name>` (will remove container, but not volumes)
 
 #### Emails sending
 

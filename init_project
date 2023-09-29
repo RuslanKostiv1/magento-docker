@@ -79,7 +79,7 @@ if [[ "yes" == "$RECLONE" ]]; then
 
     chmod g+s .
 
-    git clone ${!clone_depth} ${github_repo} ${path} -b ${!branch} --origin=${!org}
+    git clone ${!clone_depth} ${github_repo} ${path} -b ${!branch} --origin=origin
   done
 else
  cd $MAGENTO_PATH/magento2ce

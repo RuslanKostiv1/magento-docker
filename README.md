@@ -24,7 +24,7 @@
     ~/projects/livesearch/repos             # directory with repositories - MAGENTO_PATH in scripts
 ```
 
-2. Copy `.env.dist` in `.env` and update `MAGENTO_PATH` with recently created repos path.
+2. Copy `.env.dist` in `.env` and update `MAGENTO_PATH` with recently created repos path. `DOCKER_PATH` is the path to which magento-docker was cloned (`~/projects/livesearch/magento-docker` in example).
 
 3. Add `$MAGENTO_DOMAIN` from .env to hosts, e.g.:
 
@@ -49,11 +49,12 @@ Note, for the first installation (when you don't have cloned repositories yes) p
 ### Project install
 
 * RUN `mutagen project start` to start project (repositories clone, linking, configuration)
+* If you're getting the error `init_project: line 16: export: `#NEW_REPOS': not a valid identifier` and don't use `NEW_REPOS`, delete that line safely in `.env` file.
 * Log in to the Admin UI (use `ADMIN_USER`/`ADMIN_PASSWORD` from `.env`), 
 * Navigate to Stores > Configuration > Services > Commerce Services Connector
 * Get your QA API credentials from [DEV API Portal](https://account-stage.magedevteam.com/apiportal/index/index/) with Environment as *QA* and save them in Admin UI.
 * Get your PROD API credentials from [API Portal](https://account.magento.com/apiportal/index/index/) with Environment as *Production* and save them in Admin UI.
-* Refer to [this](https://devdocs.magento.com/live-search/config-connect.html) document for additional information.
+* Refer to [this](https://experienceleague.adobe.com/docs/commerce-merchant-services/user-guides/integration-services/saas.html?lang=en) document for additional information.
 * to sync products to SaaS run the following commands (before commerce-data export v103.0.0):
 ```
 bin/magento saas:resync --feed productattributes

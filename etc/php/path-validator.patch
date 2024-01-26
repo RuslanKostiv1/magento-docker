@@ -1,5 +1,5 @@
 diff --git a/lib/internal/Magento/Framework/Filesystem/Directory/PathValidator.php b/lib/internal/Magento/Framework/Filesystem/Directory/PathValidator.php
-index 9ecbfa6c9d2..0f2b7233e44 100644
+index 9ecbfa6c9d2..0f2b7233e44
 --- a/lib/internal/Magento/Framework/Filesystem/Directory/PathValidator.php
 +++ b/lib/internal/Magento/Framework/Filesystem/Directory/PathValidator.php
 @@ -57,12 +57,12 @@ class PathValidator implements PathValidatorInterface
@@ -22,7 +22,7 @@ index 9ecbfa6c9d2..0f2b7233e44 100644
      }
  }
 diff --git a/lib/internal/Magento/Framework/Filesystem/Directory/Read.php b/lib/internal/Magento/Framework/Filesystem/Directory/Read.php
-index d16fab37818..63edfdd8084 100644
+index d16fab37818..63edfdd8084
 --- a/lib/internal/Magento/Framework/Filesystem/Directory/Read.php
 +++ b/lib/internal/Magento/Framework/Filesystem/Directory/Read.php
 @@ -277,6 +277,8 @@ class Read implements ReadInterface
@@ -35,7 +35,7 @@ index d16fab37818..63edfdd8084 100644
      }
 
 diff --git a/lib/internal/Magento/Framework/View/Element/Template/File/Validator.php b/lib/internal/Magento/Framework/View/Element/Template/File/Validator.php
-index 8f0310af0a3..39529d6828d 100644
+index 8f0310af0a3..39529d6828d
 --- a/lib/internal/Magento/Framework/View/Element/Template/File/Validator.php
 +++ b/lib/internal/Magento/Framework/View/Element/Template/File/Validator.php
 @@ -120,8 +120,7 @@ class Validator

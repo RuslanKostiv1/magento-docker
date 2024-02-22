@@ -1,10 +1,10 @@
 diff --git a/lib/internal/Magento/Framework/Filesystem/Directory/PathValidator.php b/lib/internal/Magento/Framework/Filesystem/Directory/PathValidator.php
-index 9ecbfa6c9d2..0f2b7233e44
+index 5a088258eae..3141e0cefd5 100644
 --- a/lib/internal/Magento/Framework/Filesystem/Directory/PathValidator.php
 +++ b/lib/internal/Magento/Framework/Filesystem/Directory/PathValidator.php
-@@ -57,12 +57,12 @@ class PathValidator implements PathValidatorInterface
-         if (mb_strpos($actualPath, $realDirectoryPath) !== 0
-             && rtrim($path, DIRECTORY_SEPARATOR) !== $realDirectoryPath
+@@ -60,12 +60,12 @@ class PathValidator implements PathValidatorInterface
+                 && rtrim($path, DIRECTORY_SEPARATOR) !== $realDirectoryPath
+             )
          ) {
 -            throw new ValidatorException(
 -                new Phrase(
@@ -21,11 +21,12 @@ index 9ecbfa6c9d2..0f2b7233e44
          }
      }
  }
+
 diff --git a/lib/internal/Magento/Framework/Filesystem/Directory/Read.php b/lib/internal/Magento/Framework/Filesystem/Directory/Read.php
-index d16fab37818..63edfdd8084
+index 93d0f0b6aff..6eebb1d86e7 100644
 --- a/lib/internal/Magento/Framework/Filesystem/Directory/Read.php
 +++ b/lib/internal/Magento/Framework/Filesystem/Directory/Read.php
-@@ -277,6 +277,8 @@ class Read implements ReadInterface
+@@ -275,6 +275,8 @@ class Read implements ReadInterface
          $this->validatePath($path);
 
          $absolutePath = $this->driver->getAbsolutePath($this->path, $path);
@@ -35,10 +36,10 @@ index d16fab37818..63edfdd8084
      }
 
 diff --git a/lib/internal/Magento/Framework/View/Element/Template/File/Validator.php b/lib/internal/Magento/Framework/View/Element/Template/File/Validator.php
-index 8f0310af0a3..39529d6828d
+index 1875c415116..76e8f0ad435 100644
 --- a/lib/internal/Magento/Framework/View/Element/Template/File/Validator.php
 +++ b/lib/internal/Magento/Framework/View/Element/Template/File/Validator.php
-@@ -120,8 +120,7 @@ class Validator
+@@ -117,8 +117,7 @@ class Validator
                  ($this->isPathInDirectories($filename, $this->_compiledDir)
                      || $this->isPathInDirectories($filename, $this->moduleDirs)
                      || $this->isPathInDirectories($filename, $this->_themesDir)
@@ -48,3 +49,4 @@ index 8f0310af0a3..39529d6828d
          }
          return $this->_templatesValidationResults[$filename];
      }
+

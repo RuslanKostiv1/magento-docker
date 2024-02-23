@@ -1,4 +1,4 @@
-ARG MIN_PHP_VERSION=8.2.0
+ARG MIN_PHP_VERSION=8.3.0
 
 FROM php:$MIN_PHP_VERSION AS source_php_ext
 RUN apt-get update \
@@ -20,7 +20,7 @@ RUN apt-get update \
     && pecl install -f xdebug apcu msgpack libsodium runkit7 \
     && mv $(php-config --extension-dir)/*.so /
 
-FROM php:$MIN_PHP_VERSION-fpm-buster
+FROM php:$MIN_PHP_VERSION-fpm
 ARG MIN_PHP_VERSION
 COPY --from=source_php_ext *.so /tmp/ext/
 ADD https://github.com/mailhog/mhsendmail/releases/download/v0.2.0/mhsendmail_linux_amd64 /usr/local/bin/mhsendmail

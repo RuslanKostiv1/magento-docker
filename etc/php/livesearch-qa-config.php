@@ -12,14 +12,4 @@ return [
         'commerce.adobedtm.com' => 'js.magento-datasolutions.com',
         'commerce.adobedc.net' => 'com-magento-qa1.collector.snplow.net',
     ],
-    'magento-live-search/LiveSearchStorefrontPopover/etc/config.xml' => [
-        'livesearch-autocomplete.magento-ds.com' => 'searchautocompleteqa.magento-datasolutions.com'
-    ],
-    'services-id/ServicesId/etc/config.xml' => [
-        // temporary, until v1 released
-        'services-connector-ui.magento-ds.com/v1/index.js' => 'services-connector-qa.magento-datasolutions.com/v1/index.js'
-    ],
-    'magento-live-search/LiveSearchProductListing/etc/config.xml' => [
-        'plp-widgets-ui.magento-ds.com' => 'plp-widgets-ui-qa.magento-datasolutions.com',
-    ]
 ];

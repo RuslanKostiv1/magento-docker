@@ -12,69 +12,10 @@ fi
 
 rm -rf generated/* var/* app/etc/env.php
 
-# remove links
-find  . -type l -delete
-
-cp -r /tmp/build.php /var/www/magento2ce/dev/tools/build.php
-# build.php is a copy /var/www/magento2ee/dev/tools/build-ee.php
-php /var/www/magento2ce/dev/tools/build.php --command unlink
-
-repos=$INSTALLED_REPOS
-if [[ ${MAGENTO_EDITION} == 'EE' ]]; then
-  repos=${INSTALLED_REPOS_EE}
-fi
-if [[ ${MAGENTO_EDITION} == 'B2B' ]]; then
-  repos=${INSTALLED_REPOS_B2B}
-fi
-if [[ ${MAGENTO_EDITION} == 'B2B_PERF' ]]; then
-  repos=${INSTALLED_REPOS_B2B_PERF}
-fi
-# if working with repos not yet in github, add them here
-#repos="${repos} ${NEW_REPOS}"
-
 echo "$(date +"%T") Magento ${MAGENTO_EDITION} Installation START"
 
-for edition in $repos; do
-  echo "Applying $edition edition"
-
-  #apply edition
-  dst="/var/www/magento2ce"
-  #if ! [[ -d ../${edition} ]]; then
-  #  edition=magento2${edition}
-  #fi
-  if [[ ${edition} == "magento2ce" ]]; then
-      continue;
-   fi
-   if [[ ! ${edition} == "magento2ce" ]] &&
-      [[ ! ${edition} == "magento2ee" ]] &&
-      [[ ! ${edition} == "magento2b2b" ]] &&
-      [[ ! ${edition} == "magento2-sample-data" ]] &&
-      [[ ! ${edition} == "magento2-sample-data-ee" ]];
-       then
-      dst="/var/www/magento2ce/app/code/Magento"
-   fi
-
-   if [[ -d ../${edition} ]]; then
-     ### example:
-     ### php /var/www/magento2ce/dev/tools/build.php --command link --exclude true --ce-source /var/www/magento2ce/ --ee-source /var/www/magento-catalog-sync-admin
-     php /var/www/magento2ce/dev/tools/build.php --command link --exclude true --ce-source ${dst} --ee-source /var/www/${edition}
-
-     if [[ ${edition} == "magento2ee" ]] || [[ ${edition} == "magento2b2b" ]]; then
-       if [[ ${edition} == "magento2ee" ]]; then
-        cp -rlf /var/www/${edition}/composer* ${dst} 2>/dev/null
-       fi
-       cp -rlf /var/www/${edition}/setup /var/www/magento2ce/setup 2>/dev/null
-     fi
-     set +ex;
-     cp -rf /var/www/${edition}/dev ${dst} 2>/dev/null
-     set -ex;
-   else
-      echo "!!!!!!!!!!!!"
-      echo "ERROR: Directory for '${edition}' edition doesn't exist"
-      echo "!!!!!!!!!!!!"
-      exit
-   fi
-done
+# link Magento dependencies to Magento2 CE
+bash /tmp/relink
 
 # Install live-search graphql dependency
 composer require gmostafa/php-graphql-client

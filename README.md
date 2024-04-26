@@ -63,15 +63,15 @@ bin/magento saas:resync --feed productoverrides
 ```
 since commerce-data export v103.0.0 the following feeds must be run:
 ```
-bin/magento saas:resync --feed productattributes
 bin/magento saas:resync --feed products
-bin/magento saas:resync --feed productoverrides
-bin/magento saas:resync --feed scopesCustomerGroup
-bin/magento saas:resync --feed scopesWebsite
-bin/magento saas:resync --feed prices
-bin/magento saas:resync --feed variants
+bin/magento saas:resync --feed productattributes
 bin/magento saas:resync --feed categories
-bin/magento saas:resync --feed categoryPermissions 
+bin/magento saas:resync --feed categoryPermissions
+bin/magento saas:resync --feed prices
+bin/magento saas:resync --feed productOverrides
+bin/magento saas:resync --feed variants
+bin/magento saas:resync --feed scopesWebsite
+bin/magento saas:resync --feed scopesCustomerGroup
 ```         
 * to sync product updates simply run
 ```
@@ -176,6 +176,10 @@ MailHog is used to receive emails sent by Magento, navigate to http://localhost:
 
 - Then, create a new Run/Debug Configuration with path mapping:
 ![alt text](https://user-images.githubusercontent.com/2975006/181730715-7d8cacd2-4810-4a0a-934b-35acc298b057.png)
+
+#### Re-link dependencies to Magento Open Source (CE)
+
+* `docker-compose exec app magento relink`
 
 #### Magento (Re)-Installation
 

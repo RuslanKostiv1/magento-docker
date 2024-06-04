@@ -23,7 +23,7 @@ return [
                 ],
             ],
             'live_search_product_listing' => [
-                'frontend_url' => 'https://plp-widgets-ui-qa.magento-datasolutions.com/v1/search.js',
+                'frontend_url' => 'https://plp-widgets-ui-qa.magento-datasolutions.com/v2/search.js',
             ],
             'catalog_sync_admin' => [
                 'frontend_url' => 'https://data-management-external-qa.magento-datasolutions.com/v1/index.js',

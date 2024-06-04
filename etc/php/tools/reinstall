@@ -21,6 +21,7 @@ bash /tmp/relink
 composer require gmostafa/php-graphql-client
 # Install live-search firebase/php-jwt dependency
 composer require firebase/php-jwt
+composer require webonyx/graphql-php:^15.0
 
 #install magento
 composer install

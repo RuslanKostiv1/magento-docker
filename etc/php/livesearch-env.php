@@ -26,8 +26,8 @@ return [
                 'frontend_url' => 'https://plp-widgets-ui-qa.magento-datasolutions.com/v2/search.js',
             ],
             'catalog_sync_admin' => [
-                'frontend_url' => 'https://data-management-external-qa.magento-datasolutions.com/v1/index.js',
-                'frontend_css_url' => 'https://data-management-external-qa.magento-datasolutions.com/v1/index.css'
+                'frontend_url' => 'https://data-management-external-qa.magento-datasolutions.com/v1/main.js',
+                'frontend_css_url' => 'https://data-management-external-qa.magento-datasolutions.com/v1/main.css'
             ],
         ],
     ],

@@ -55,16 +55,10 @@ Note, for the first installation (when you don't have cloned repositories yes) p
 * Get your QA API credentials from [DEV API Portal](https://account-stage.magedevteam.com/apiportal/index/index/) with Environment as *QA* and save them in Admin UI.
 * Get your PROD API credentials from [API Portal](https://account.magento.com/apiportal/index/index/) with Environment as *Production* and save them in Admin UI.
 * Refer to [this](https://experienceleague.adobe.com/docs/commerce-merchant-services/user-guides/integration-services/saas.html?lang=en) document for additional information.
-* to sync products to SaaS run the following commands (before commerce-data export v103.0.0):
+* to sync products with SaaS run the following commands:
 ```
 bin/magento saas:resync --feed productattributes
 bin/magento saas:resync --feed products
-bin/magento saas:resync --feed productoverrides
-```
-since commerce-data export v103.0.0 the following feeds must be run:
-```
-bin/magento saas:resync --feed products
-bin/magento saas:resync --feed productattributes
 bin/magento saas:resync --feed categories
 bin/magento saas:resync --feed categoryPermissions
 bin/magento saas:resync --feed prices

@@ -18,7 +18,7 @@ echo "$(date +"%T") Magento ${MAGENTO_EDITION} Installation START"
 bash /tmp/relink
 
 # Install live-search graphql dependency
-composer require gmostafa/php-graphql-client
+composer require carnage/php-graphql-client
 # Install live-search firebase/php-jwt dependency
 composer require firebase/php-jwt
 composer require webonyx/graphql-php:^15.0

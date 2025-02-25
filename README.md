@@ -57,15 +57,15 @@ Note, for the first installation (when you don't have cloned repositories yes) p
 * Refer to [this](https://experienceleague.adobe.com/docs/commerce-merchant-services/user-guides/integration-services/saas.html?lang=en) document for additional information.
 * to sync products with SaaS run the following commands:
 ```
-bin/magento saas:resync --feed productattributes
-bin/magento saas:resync --feed products
-bin/magento saas:resync --feed categories
-bin/magento saas:resync --feed categoryPermissions
-bin/magento saas:resync --feed prices
-bin/magento saas:resync --feed productOverrides
-bin/magento saas:resync --feed variants
-bin/magento saas:resync --feed scopesWebsite
-bin/magento saas:resync --feed scopesCustomerGroup
+bin/magento saas:resync --feed productattributes --cleanup-feed
+bin/magento saas:resync --feed products --cleanup-feed
+bin/magento saas:resync --feed categories --cleanup-feed
+bin/magento saas:resync --feed categoryPermissions --cleanup-feed
+bin/magento saas:resync --feed prices --cleanup-feed
+bin/magento saas:resync --feed productOverrides --cleanup-feed
+bin/magento saas:resync --feed variants --cleanup-feed
+bin/magento saas:resync --feed scopesWebsite --cleanup-feed
+bin/magento saas:resync --feed scopesCustomerGroup --cleanup-feed
 ```         
 * to sync product updates simply run
 ```

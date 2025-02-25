@@ -29,6 +29,10 @@ return [
                 'frontend_url' => 'https://data-management-external-qa.magento-datasolutions.com/v1/main.js',
                 'frontend_css_url' => 'https://data-management-external-qa.magento-datasolutions.com/v1/main.css'
             ],
+            'product_recommendations' => [
+                'frontend_url' => 'https://admin-ui-qa.magento-datasolutions.com/v2/loader.js',
+                'content_security_policy' => 'assets.adobedtm.com use.typekit.net p.typekit.net recommendations-admin-ui.s3.amazonaws.com amcglobal.sc.omtrdc.net admin-ui-qa.magento-datasolutions.com',
+            ],
         ],
     ],
 ];

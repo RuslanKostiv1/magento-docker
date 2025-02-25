@@ -63,4 +63,10 @@ for edition in $repos; do
       echo "!!!!!!!!!!!!"
       exit
    fi
+
+   # CIF compatibility pack
+   #mkdir -p /var/www/magento2ce/app/code/Adobe
+   #php -f /var/www/magento2ee/dev/tools/build-ee.php -- --command link --exclude true --ce-source /var/www/magento2ce/app/code/Adobe --ee-source /var/www/cif-compatibility-pack
+   #php -f /var/www/magento2ee/dev/tools/build-ee.php -- --command link --exclude true --ce-source /var/www/magento2ce/app/code/Magento --ee-source /var/www/saas-prices-provider
+
 done

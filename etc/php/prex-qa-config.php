@@ -18,6 +18,9 @@ return [
         'commerce.adobe.io' => 'commerce-int.adobe.io',
         'commerce.adobedc.net' => 'admin-ui-qa.magento-datasolutions.com',
     ],
+    'product-recommendations/ProductRecommendationsLayout/view/frontend/requirejs-config.js' => [
+        'magento-recs-sdk.adobe.net/v2/index' => 'sdk.magento-datasolutions.com/qa/v2/index',
+    ],
     'catalog-sync-admin/CatalogSyncAdmin/etc/csp_whitelist.xml' => [
         'api.magento.com' => 'qa-api.magedevteam.com',
         'commerce.adobe.io' => 'commerce-int.adobe.io',
